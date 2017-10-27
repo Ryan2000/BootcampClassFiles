@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy API</title>
+</head>
+
+<body>
+  <div>
+    <div id="images-goes-here">
+
+    </div>
+  </div>
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript">
+      // Example queryURL for Giphy API
+      var queryURL = "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+
+      $.ajax({
+        url: queryURL,
+        method: 'GET'
+      }).done(function(response) {
+        $('#images-goes-here').empty();
+        response.data.forEach((function(image) {
+          $('#images-goes-here').append('<img src="'+image.images.fixed_height.url+'" />')
+        }))
+      });
+  </script>
+
+</body>
+
+</html>

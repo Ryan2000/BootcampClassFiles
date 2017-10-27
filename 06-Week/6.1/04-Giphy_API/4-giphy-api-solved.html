@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy API</title>
+</head>
+
+<body>
+  <div>
+    <h1>Load me an image from giphy!</h1>
+    <button>Load one!</button>
+    <div id="image-goes-here">
+        .. it will show up here
+    </div>
+  </div>
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript">
+    $('button').on('click', function() {
+      // Example queryURL for Giphy API
+      var queryURL = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&rating=pg";
+
+      $.ajax({
+        url: queryURL,
+        method: 'GET'
+      }).done(function(response) {
+        $('#image-goes-here').html('<img src="'+response.data.image_url+'" />')
+      });
+    })
+  </script>
+
+</body>
+
+</html>
